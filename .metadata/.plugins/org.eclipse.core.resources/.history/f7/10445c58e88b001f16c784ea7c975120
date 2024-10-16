@@ -1,0 +1,23 @@
+package com.epn;
+
+public class TestCalculadora {
+
+	public static void main(String[] args) {
+		Calculadora calcu;
+		int resultadoSuma;
+		int resultadoResta;
+		double producto;
+		double cociente;
+		double promedio;
+		calcu=new Calculadora();
+		resultadoSuma=calcu.sumar(5, 3);
+		resultadoResta=calcu.restar(8,3);
+		producto=calcu.multiplicar(10,5);
+		
+		System.out.println("Resultado Suma: "+resultadoSuma );
+		System.out.println("------------------------------------");
+		System.out.println("Resultado Resta: "+resultadoResta );
+
+	}
+
+}
