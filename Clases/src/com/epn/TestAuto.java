@@ -5,6 +5,7 @@ public class TestAuto {
 	public static void main(String[] args) {
 		Auto auto1 = new Auto();
 		Auto auto2 = new Auto();
+		Auto auto3 = new Auto("Mclaren", 2016, 159.999);
 
 		auto1.setMarca("CHEVROLET");
 		auto1.setAnio(2016);
@@ -18,7 +19,7 @@ public class TestAuto {
 		System.out.println("Marca: " + auto1.getMarca());
 		System.out.println("Año: " + auto1.getAnio());
 		System.out.println("Precio: " + auto1.getPrecio());
-		
+
 		System.out.println("----------------------");
 
 		// Auto 2
@@ -26,6 +27,13 @@ public class TestAuto {
 		System.out.println("Marca: " + auto2.getMarca());
 		System.out.println("Año: " + auto2.getAnio());
 		System.out.println("Precio: " + auto2.getPrecio());
+		
+		System.out.println("----------------------");
+
+		// Auto 3
+		System.out.println("Marca: " + auto3.getMarca());
+		System.out.println("Año: " + auto3.getAnio());
+		System.out.println("Precio: " + auto3.getPrecio());
 
 	}
 
