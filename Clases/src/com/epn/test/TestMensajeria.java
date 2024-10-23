@@ -1,4 +1,6 @@
-package com.epn;
+package com.epn.test;
+
+import com.epn.Mensajeria;
 
 public class TestMensajeria {
 

@@ -1,5 +1,7 @@
 
-package com.epn;
+package com.epn.test;
+
+import com.epn.Persona;
 
 /*
  * Esto es un comentario de varias lineas;
