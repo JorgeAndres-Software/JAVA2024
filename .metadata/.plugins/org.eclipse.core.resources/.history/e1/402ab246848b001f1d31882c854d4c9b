@@ -1,7 +1,0 @@
-package com.epn;
-
-public class Mensajeria {
-	public void saludar() {
-		System.out.println("Hola Poliamigos");
-	}
-}
