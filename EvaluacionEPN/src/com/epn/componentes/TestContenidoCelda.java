@@ -1,4 +1,4 @@
-package com.epn.test;
+package com.epn.componentes;
 
 
 public class TestContenidoCelda {
@@ -10,9 +10,9 @@ public class TestContenidoCelda {
 		
 		System.out.println("CELDA:"+celda.getCodigo());
 		System.out.println("*************************************");
-		System.out.println("Nombre Producto:"+celda.getProducto().getNombre());
-		System.out.println("Precio Producto:"+celda.getProducto().getPrecio());
-		System.out.println("Codigo Producto:"+celda.getProducto().getCodigo());
+		System.out.println("Nombre Producto:"+celda.getProducto().getName());
+		System.out.println("Precio Producto:"+celda.getProducto().getPrice());
+		System.out.println("Codigo Producto:"+celda.getProducto().getCode());
 		System.out.println("STOCK:"+celda.getStock());
 	}
 

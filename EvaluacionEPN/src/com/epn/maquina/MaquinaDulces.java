@@ -18,6 +18,8 @@ public class MaquinaDulces {
 		celda3 = new Celda(c3);
 		celda4 = new Celda(c4);
 	}
+	
+	//Se instancia la celdas ya que sin celdas no bay una maquina de dulces como tal
 
 	public void mostrarConfiguracion() {
 		
