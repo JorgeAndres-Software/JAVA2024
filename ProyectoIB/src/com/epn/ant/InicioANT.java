@@ -28,19 +28,18 @@ public class InicioANT {
 		revisor = new Revisor("Carlos Gómez", "9876543210");
 	}
 
-	 // Obtener la fecha actual
-    static LocalDate fechaActual = LocalDate.now();
-    // Obtener la hora actual
-    static LocalTime horaActual = LocalTime.now();
+	// Obtener la fecha actual
+	static LocalDate fechaActual = LocalDate.now();
+	// Obtener la hora actual
+	static LocalTime horaActual = LocalTime.now();
 
-    static // Formatear la fecha
-    DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    static String fechaFormateada = fechaActual.format(formatoFecha);
+	static // Formatear la fecha
+	DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	static String fechaFormateada = fechaActual.format(formatoFecha);
 
-    static // Formatear la hora
-    DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
-    static String horaFormateada = horaActual.format(formatoHora);
-
+	static // Formatear la hora
+	DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+	static String horaFormateada = horaActual.format(formatoHora);
 
 	public static void main(String[] args) {
 		inicializarDatos();
@@ -51,7 +50,7 @@ public class InicioANT {
 				System.out.println("La Agencia Nacional de Transito trabajando por su seguridad...");
 				System.out.println("-------------------------------------------------");
 				System.out.println("Hora de Ingreso: " + horaFormateada);
-				System.out.println("Fecha de Ingreso: "+fechaFormateada);
+				System.out.println("Fecha de Ingreso: " + fechaFormateada);
 				System.out.println("-------------------------------------------------");
 				System.out.println("1. Ingresar como Propietario");
 				System.out.println("2. Ingresar como Revisor");
@@ -62,6 +61,31 @@ public class InicioANT {
 
 				switch (opcion) {
 				case 1:
+					System.out.println(
+							"================================================================================");
+					System.out.println(
+							"Tome en cuenta que la revisión vehicular es un proceso obligatorio que se realiza anualmente ");
+					System.out.println(
+							"para garantizar que los vehículos cumplan con los estándares técnicos y ambientales.");
+					System.out.println();
+					System.out.println(
+							"Segun la Ley Orgánica de Transporte Terrestre,Tránsito y Seguridad Vial (particularmente el Artículo 85) ");
+					System.out.println("señala que para pasar la revision se debe cumplir lo siguiente:");
+					System.out
+							.println("-------------------------------------------------------------------------------");
+					System.out.println("Temperatura Motor: (minima 70 C°) y (maxima 110 C°). ");
+					System.out.println("Eficiencia de frenos: (minimo 70%) y (maxima 100%).");
+					System.out.println("Equilibrio de frenos: (Debe superar el 20%). ");
+					System.out.println("Ruido de escape: (No debe superar los 95dB).");
+					System.out.println("Emisiones de gases: (minimo 3%) y (maximo 5%) de emision de CO2.");
+					System.out.println("Profundidad del labrado: (minimo 1.66mm de profundidad).");
+					System.out.println("Eficiencia del amortiguador: (minimo 35%) y (maximo 100%)");
+					System.out.println("El vehiculo no debe presentar fugas de aceite en la revision.");
+					System.out.println(
+							"El vehiculo no debe presentar daños estructurales significativos en la revision.");
+					System.out.println(
+							"================================================================================");
+
 					System.out.println("Ingrese su numero de placa: ");
 					String placa = scanner.nextLine();
 					if (vehiculoRegistrado.getPlaca().equals(placa)) {
@@ -74,9 +98,11 @@ public class InicioANT {
 						System.out.println(vehiculoRegistrado.detallesInspeccion());
 						System.out.println("----------Problemas Encontrados-----");
 						System.out.println(vehiculoRegistrado.obtenerErrores());
+						System.out.println("------------AGENTE ASIGNADO---------");
+						System.out.println("Revisor: "+revisor.getNombre());
 					} else {
 						System.out.println(
-								"Vehiculo no registrado previamente por un agente de la ANT o se produjo un error en el ingreso de la placa");
+								"Vehiculo no registrado previamente por un agente de la ANT o se produjo un error en el ingreso de la placa.");
 						System.out.println("Por favor ingrese nuevamente...");
 						System.out.println();
 					}
@@ -232,6 +258,7 @@ public class InicioANT {
 				propietario.asignarVehiculo(vehiculoRegistrado);
 
 				System.out.println("Vehículo registrado con éxito.");
+				System.out.println("******************************");
 				System.out.println("Propietario asignado: " + propietario.informacionPerfil());
 			} else {
 				System.out.println(errores);
@@ -420,24 +447,21 @@ public class InicioANT {
 		String obtenerTipo = "";
 		char caracter = placa.charAt(1);
 		String segundaLetra = String.valueOf(caracter);
-		if (segundaLetra == "A" || segundaLetra == "Z") {
+		if (segundaLetra.endsWith("A") || segundaLetra.equals("Z")) {
 			obtenerTipo = "Vehiculos comerciales (taxis o autobuses).";
 			return obtenerTipo;
 
-		} else if (segundaLetra == "E") {
+		} else if (segundaLetra.equals("E")) {
 			obtenerTipo = "Vehiculos gubernamentales.";
 			return obtenerTipo;
-		} else if (segundaLetra == "X") {
+		} else if (segundaLetra.equals("X")) {
 			obtenerTipo = "Vehiculos de uso oficial.";
 			return obtenerTipo;
 		} else if (segundaLetra == "S") {
 			obtenerTipo = "Vehiculos del gobierno provincial.";
 			return obtenerTipo;
-		} else if (segundaLetra == "M") {
+		} else if (segundaLetra.equals("M")) {
 			obtenerTipo = "Vehiculos municipales.";
-			return obtenerTipo;
-		} else if (segundaLetra == "E") {
-			obtenerTipo = "Vehiculos gubernamentales.";
 			return obtenerTipo;
 
 		} else if (segundaLetra != "E" && segundaLetra != "M" && segundaLetra != "S" && segundaLetra != "X"

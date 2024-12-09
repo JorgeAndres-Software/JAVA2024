@@ -1,7 +1,5 @@
 package com.epn.user;
 
-import com.epn.ct.Revisor;
-
 public class Propietario {
     private String nombre;
     private String idPropietario;
@@ -17,12 +15,7 @@ public class Propietario {
     }
 
     public String informacionPerfil() {
-        return "Nombre: " + nombre + "\nID: " + idPropietario + "\nVehículo Asignado: " + (vehiculo != null ? vehiculo.detallesInspeccion() : "No asignado");
-    }
-
-    public String consultarResultado(Revisor revisor) {
-        return vehiculo.isPasoRevision() ? "El vehículo pasó la revisión." : "El vehículo no pasó la revisión." +vehiculo.obtenerErrores();
-       
+        return "Nombre: " + nombre + "\nID: " + idPropietario + "\nVehículo Asignado: " + (vehiculo != null ? vehiculo.detallesCarro() : "No asignado");
     }
 }
 	

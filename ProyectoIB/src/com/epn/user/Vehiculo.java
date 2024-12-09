@@ -156,29 +156,40 @@ public class Vehiculo {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.anio = anio;
-	
-	
-	
-	//Methods
+
+
 }
+//Methods
 
 	public void verificarRevision() {
-		this.pasoRevision = temperaturaMotor >= 80 && eficienciaFrenos >= 85 && emisionesGases <= 100 && !fugasAceite
+		this.pasoRevision = temperaturaMotor >= 70 && eficienciaFrenos >= 70 && emisionesGases <= 5 && equilibrioFrenos>= 20 && ruidoEscape <= 95 && profundidadLabrado >= 1.6 && eficaciaAmortiguador >= 35 && !fugasAceite
 				&& !estructuraDanios;
 	}
 	
 	public String obtenerErrores() {
         StringBuilder errores = new StringBuilder();
 
-        if (temperaturaMotor < 80 || temperaturaMotor > 120) {
-            errores.append("\nLa temperatura del motor no está en el rango permitido (80-120).\n");
+        if (temperaturaMotor < 70 || temperaturaMotor > 110) {
+            errores.append("\nLa temperatura del motor no está en el rango permitido (70-110) °C.\n");
         }
-        if (eficienciaFrenos < 85) {
-            errores.append("\nLa eficiencia de los frenos es insuficiente (<85).\n");
+        if (eficienciaFrenos < 70) {
+            errores.append("\nLa eficiencia de los frenos es insuficiente (<70 %).\n");
         }
-        if (emisionesGases > 100) {
-            errores.append("\nLas emisiones de gases superan el límite permitido (>100).\n");
+        if (emisionesGases > 5) {
+            errores.append("\nLas emisiones de gases superan el límite permitido (>5 %).\n");
         }
+		if (ruidoEscape>95){
+			errores.append("\nEl ruido de escape no está en el rango permitido (>=95 dB).\n");
+		}
+		if (equilibrioFrenos<20)	{
+			errores.append("\nEl equilibrio de frenos es insuficiente (<20%).\n");
+		}
+		if (profundidadLabrado <1.6) {
+			errores.append("\nLa profundidad del labrado no está en el rango permitido (<1.6 mm).\n");
+		}
+		if (eficaciaAmortiguador<35){
+			errores.append("\nLa eficacia del amortiguador no se encuentra en el rango permitido (<35%).\n");
+		}
         if (fugasAceite) {
             errores.append("\nEl vehículo tiene fugas de aceite.\n");
         }
@@ -199,12 +210,18 @@ public class Vehiculo {
 
 	public String detallesInspeccion() {
 		return "Placa: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio
-				+ "\nTemperatura Motor: " + temperaturaMotor + "\nEficiencia Frenos: " + eficienciaFrenos
-				+ "\nEquilibrio Frenos: " + equilibrioFrenos + "\nEficacia Amortiguador: " + eficaciaAmortiguador
-				+ "\nRuido Escape: " + ruidoEscape + "\nEmisiones Gases: " + emisionesGases + "\nProfundidad Labrado: "
-				+ profundidadLabrado + "\nFugas Aceite: " + (fugasAceite ? "Sí" : "No") + "\nEstructura Daños: "
+				+ "\nTemperatura Motor: " + temperaturaMotor +" °C "+ "\nEficiencia Frenos: " + eficienciaFrenos + " % "
+				+ "\nEquilibrio Frenos: " + equilibrioFrenos + " % "+"\nEficacia Amortiguador: " + eficaciaAmortiguador + " % "
+				+ "\nRuido Escape: " + ruidoEscape + " dB "+"\nEmisiones Gases: " + emisionesGases + " % "+ "\nProfundidad Labrado: "
+				+ profundidadLabrado + " mm "+ "\nFugas Aceite: " + (fugasAceite ? "Sí" : "No") + "\nEstructura Daños: "
 				+ (estructuraDanios ? "Sí" : "No") + "\n¿Pasó la revisión?: " + (pasoRevision ? "Sí" : "No");
 	}
 	
 
-}
+	public String detallesCarro() {
+		return "Placa: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio;
+	}
+
+	}
+
+
