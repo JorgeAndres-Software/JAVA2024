@@ -21,14 +21,15 @@ public class Curso {
 
 	// Methods
 	public String buscarEstudiantePorCedula(Estudiante estudiante) {
-		Estudiante elementoEstudiante;
+		Estudiante elementoEstudiante=null;
 		String resultado = null;
 		for (int i = 0; i < estudiantes.size(); i++) {
 			elementoEstudiante = estudiantes.get(i);
 			if (estudiante.getCedula().equals(elementoEstudiante.getCedula())) {
-				resultado = null;
+				resultado= "El estudiante ya esta dentro de un curso";
+				System.out.println(resultado);
 			} else {
-				resultado = "Estiudiante no esta dentro del curso";
+				resultado = null;
 			}
 		}
 		return resultado;
@@ -36,8 +37,9 @@ public class Curso {
 
 	public void matricularEstudiantes(Estudiante estudiante) {
 		String EstudianteActivo = buscarEstudiantePorCedula(estudiante);
-		if (EstudianteActivo != null) {
+		if (EstudianteActivo==null) {
 			estudiantes.add(estudiante);
+			System.out.println("Estudiante agregado con exito!!!");
 		} else {
 			System.out.println("El estudiante ya existe en el sistema!");
 		}
@@ -61,7 +63,7 @@ public class Curso {
 		for (int i = 0; i < estudiantes.size(); i++) {
 			elementoEstudiante = estudiantes.get(i);
 			System.out.println("Nombre: " + elementoEstudiante.getNombre() + ", Apellido: "
-					+ elementoEstudiante.getApellido() + ", Cedula: " + elementoEstudiante.getCedula() + " Promedio: "
+					+ elementoEstudiante.getApellido() + ", Cedula: " + elementoEstudiante.getCedula() + ", Promedio: "
 					+ elementoEstudiante.calcularPromedioNotasEstudiante());
 		}
 	}

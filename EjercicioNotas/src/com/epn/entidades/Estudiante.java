@@ -47,45 +47,52 @@ public class Estudiante {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.cedula = cedula;
-		notas = new ArrayList<Nota>();
+		this.notas = new ArrayList<Nota>();
 
 	}
 
 	// Methods
 
-	public void agregarNota(Nota nota) {
-		Nota elementoNota;
-		for (int i = 0; i < notas.size(); i++) {
-			elementoNota = notas.get(i);
-			if ((elementoNota.getMateria().getCodigo() != nota.getMateria().getCodigo())
-					&& (elementoNota.getCalificacion() > 0 && elementoNota.getCalificacion() < 11)) {
-				notas.add(elementoNota);
-				System.out.println("Nota agregada con exito!");
+	public void agregarNota(Nota nuevaNota) {
+		Nota elementoNota = null;
+		if (nuevaNota.getCalificacion() >= 0.0 && nuevaNota.getCalificacion() <= 10.0) {
+			for (int i = 0; i < notas.size(); i++) {
+				elementoNota = notas.get(i);
+				if (elementoNota.getMateria().getCodigo().equals(nuevaNota.getMateria().getCodigo())) {
+					System.out.println("La nota ya existe!! " + nuevaNota.getMateria().getCodigo());
+				}
 			}
+			notas.add(nuevaNota);
+			System.out.println("Nota agregada con exito en el sistema Saew!!");
+		} else {
+			System.out.println("La nota debe estar en un rango entre 0-10");
 		}
 	}
 
 	public void modificarNota(String codigo, double nuevaNota) {
-		Nota elementoNota;
+		Nota elementoNota = null;
+
 		for (int i = 0; i < notas.size(); i++) {
 			elementoNota = notas.get(i);
 			if (elementoNota.getMateria().getCodigo().equals(codigo)) {
-				if (elementoNota.getCalificacion() > 0 && elementoNota.getCalificacion() < 11) {
+				if (nuevaNota >= 0.0 && nuevaNota <= 10.0) {
 					elementoNota.setCalificacion(nuevaNota);
+					System.out.println("NOTA MODIFICADA");
+				} else {
+					System.out.println("ERROR DE MODIFICACION: LA NOTA DEBE ESTAR ENTRE 0-10");
 				}
-			} else {
-				System.out.println("No se encontro el codigo");
 			}
 		}
+		System.out.println("NO EXISTE NOTA CON EL CODIGO: " + codigo + ".");
 	}
 
 	public double calcularPromedioNotasEstudiante() {
-		Nota elementoNota;
+		Nota elementoNota = null;
 		double sumaNotas = 0.0;
-		double promedio;
+		double promedio = 0.0;
 		for (int i = 0; i < notas.size(); i++) {
 			elementoNota = notas.get(i);
-			sumaNotas = sumaNotas + elementoNota.getCalificacion();
+			sumaNotas += elementoNota.getCalificacion();
 		}
 
 		promedio = sumaNotas / notas.size();
